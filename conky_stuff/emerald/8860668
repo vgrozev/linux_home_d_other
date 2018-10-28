@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en" dir="ltr">
+  <head>
+<base href="https://blueprints.launchpad.net/%7Ecybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+index" />
+
+    <meta charset="UTF-8" />
+    <title>amd64 build of emerald 0.9.5-a~trusty~NoobsLab.com : Panto packages Ubuntu xenial : Cyber Sec I</title>
+    <link rel="shortcut icon" href="/@@/launchpad.png" />
+    
+    
+    
+
+    
+  
+  <link type="text/css" rel="stylesheet"
+        media="screen, print"
+        href="/+icing/rev18269/combo.css" />
+
+
+    
+
+    
+      
+    
+
+    
+  
+
+  
+  
+  <script type="text/javascript">
+    var LP = {
+        cache: {},
+        links: {}
+    };
+  </script>
+
+  
+
+  <script type="text/javascript">var cookie_scope = '; Path=/; Secure; Domain=.launchpad.net';</script>
+
+   <script type="text/javascript"
+           src="/+combo/rev18269/?yui/yui/yui-min.js&amp;lp/meta.js&amp;yui/loader/loader-min.js"></script>
+   <script type="text/javascript">
+        var raw = null;
+        if (LP.devmode) {
+           raw = 'raw';
+        }
+        YUI.GlobalConfig = {
+            combine: true,
+            comboBase: '/+combo/rev18269/?',
+            root: 'yui/',
+            filter: raw,
+            debug: false,
+            fetchCSS: false,
+            maxURLLength: 2000,
+            groups: {
+                lp: {
+                    combine: true,
+                    base: '/+combo/rev18269/?lp/',
+                    comboBase: '/+combo/rev18269/?',
+                    root: 'lp/',
+                    // comes from including lp/meta.js
+                    modules: LP_MODULES,
+                    fetchCSS: false
+                }
+            }
+        }</script>
+
+  <script type="text/javascript">
+      // we need this to create a single YUI instance all events and code
+      // talks across. All instances of YUI().use should be based off of
+      // LPJS instead.
+      LPJS = new YUI();
+  </script>
+
+
+
+    <script id="base-layout-load-scripts" type="text/javascript">
+        //<![CDATA[
+        LPJS.use('base', 'node', 'console', 'event',
+            'oop', 'lp', 'lp.app.foldables','lp.app.sorttable',
+            'lp.app.inlinehelp', 'lp.app.links', 'lp.app.longpoll',
+            'lp.bugs.bugtask_index', 'lp.bugs.subscribers',
+            'lp.app.ellipsis', 'lp.code.branchmergeproposal.diff',
+            'lp.views.global',
+             function(Y) {
+
+            Y.on("domready", function () {
+                var global_view = new Y.lp.views.Global();
+                global_view.render();
+
+                Y.lp.app.sorttable.SortTable.init();
+                Y.lp.app.inlinehelp.init_help();
+                Y.lp.activate_collapsibles();
+                Y.lp.app.foldables.activate();
+                Y.lp.app.links.check_valid_lp_links();
+                // Longpolling will only start if
+                // LP.cache.longpoll is populated.
+                // We use Y.later to work around a Safari/Chrome 'feature':
+                // The mouse cursor stays 'busy' until all the requests started during
+                // page load are finished.  Hence we want the long poll request to start
+                // right *after* the page has loaded.
+                Y.later(0, Y.lp.app.longpoll, Y.lp.app.longpoll.setupLongPollManager);
+
+            });
+
+            Y.on('lp:context:web_link:changed', function(e) {
+                  window.location = e.new_value;
+            });
+        });
+        //]]>
+    </script>
+    <script id="base-helper-functions" type="text/javascript">
+         //<![CDATA[
+        // This code is pulled from lp.js that needs to be available on every
+        // request. Pulling here to get it outside the scope of the YUI block.
+        function setFocusByName(name) {
+            // Focus the first element matching the given name which can be focused.
+            var nodes = document.getElementsByName(name);
+            var i, node;
+            for (i = 0; i < nodes.length; i++) {
+                node = nodes[i];
+                if (node.focus) {
+                    try {
+                        // Trying to focus a hidden element throws an error in IE8.
+                        if (node.offsetHeight !== 0) {
+                            node.focus();
+                        }
+                    } catch (e) {
+                        LPJS.use('console', function(Y) {
+                            Y.log('In setFocusByName(<' +
+                                node.tagName + ' type=' + node.type + '>): ' + e);
+                        });
+                    }
+                    break;
+                }
+            }
+        }
+
+        function selectWidget(widget_name, event) {
+          if (event && (event.keyCode === 9 || event.keyCode === 13)) {
+              // Avoid firing if user is tabbing through or simply pressing
+              // enter to submit the form.
+              return;
+          }
+          document.getElementById(widget_name).checked = true;
+        }
+        //]]>
+    </script>
+
+    
+      
+    
+  </head>
+
+  <body id="document" itemscope=""
+        itemtype="http://schema.org/WebPage"
+        class="tab-overview
+      main_only
+      public
+      yui3-skin-sam">
+          
+          
+    <div class="yui-d0">
+      <div id="locationbar" class="login-logout">
+        
+
+<div id="logincontrol"><a href="https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+login">Log in / Register</a></div>
+
+
+
+      </div><!--id="locationbar"-->
+
+      <div id="watermark" class="watermark-apps-portlet">
+        <div>
+          <a href="https://launchpad.net/~cybersec"><img alt="" width="64" height="64" src="/@@/person-logo" /></a>
+        </div>
+        <div class="wide">
+          <h2 id="watermark-heading"><a href="https://launchpad.net/~cybersec">Cyber Sec I</a></h2>
+        </div>
+        
+  <!-- Application Menu -->
+  <ul class="facetmenu">
+    
+      <li class="overview active"><a
+    href="https://launchpad.net/~cybersec">Overview</a></li>
+      
+      
+    
+    
+      
+      <li class="branches"><a
+    href="https://code.launchpad.net/~cybersec">Code</a></li>
+      
+    
+    
+      
+      <li class="bugs"><a href="https://bugs.launchpad.net/~cybersec">Bugs</a></li>
+      
+    
+    
+      
+      <li class="specifications"><a
+    href="https://blueprints.launchpad.net/~cybersec">Blueprints</a></li>
+      
+    
+    
+      
+      <li class="translations"><a
+    href="https://translations.launchpad.net/~cybersec">Translations</a></li>
+      
+    
+    
+      
+      <li class="answers"><a href="https://answers.launchpad.net/~cybersec">Answers</a></li>
+      
+    
+  </ul>
+
+      </div>
+
+      
+        <div id="maincontent" class="yui-main">
+          <div class="yui-b" dir="ltr">
+            <div class="context-publication">
+              <h1>amd64 build of emerald 0.9.5-a~trusty~NoobsLab.com in ubuntu xenial RELEASE</h1>
+              <ol itemprop="breadcrumb" class="breadcrumbs">
+
+
+  <li>
+    <a href="https://launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial">Panto packages Ubuntu xenial</a>
+  </li>
+
+
+  <li>
+    amd64 build of emerald 0.9.5-a~trusty...
+  </li>
+
+</ol>
+
+              <div id="registration" class="registering">
+                
+        created
+        <span title="2016-01-17 08:49:29 UTC">on 2016-01-17</span>
+    
+              </div>
+            </div>
+
+            
+            <div id="request-notifications">
+              
+            </div>
+
+            
+              <div>
+
+      <div class="yui-g">
+
+        <div id="status" class="yui-u first">
+	  <div class="portlet">
+            
+    
+    <h2>Build status</h2>
+    <p>
+      <img width="14" height="14" alt="[FULLYBUILT]" title="Successfully built" src="/@@/build-success" />
+      <span class="buildstatusFULLYBUILT">Successfully built</span>
+      
+      
+        on <a href="/builders/lgw01-18">lgw01-18</a>
+      
+      
+      
+    </p>
+
+    <ul>
+      
+      
+      
+      
+      
+        <li>
+          Started <span title="2016-01-17 08:49:31 UTC">on 2016-01-17</span>
+        </li>
+      
+      <li>
+        Finished <span title="2016-01-17 08:54:52 UTC">on 2016-01-17</span>
+        
+          (took 5 minutes, 21.2 seconds)
+        
+      </li>
+      <li>
+        <a class="sprite download"
+           href="https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+files/buildlog_ubuntu-xenial-amd64.emerald_0.9.5-a~trusty~NoobsLab.com_BUILDING.txt.gz">buildlog</a>
+        (43.0 KiB)
+      </li>
+      
+      <li>
+        <a class="sprite download"
+           href="https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+files/emerald_0.9.5-a~trusty~NoobsLab.com_amd64.changes">emerald_0.9.5-a~trusty~NoobsLab.com_amd64.changes</a>
+        (1.7 KiB)
+      </li>
+    </ul>
+  
+          </div>
+        </div>
+
+        <div id="details" class="yui-u">
+	  <div class="portlet">
+            
+    
+    <h2>Build details</h2>
+    <div class="two-column-list">
+      <dl>
+        <dt>Source:</dt>
+          <dd>
+            <span class="sprite package-source">emerald - 0.9.5-a~trusty~NoobsLab.com</span>
+            
+          </dd>
+      </dl>
+      
+      <dl>
+        <dt>Archive:</dt>
+          <dd>
+            <a href="/~cybersec/+archive/ubuntu/panto-packages-xenial" class="sprite ppa-icon">Panto packages Ubuntu xenial</a>
+          </dd>
+      </dl>
+      <dl>
+        <dt>Series:</dt>
+          <dd><a class="sprite distribution"
+                 href="/ubuntu/xenial">Xenial</a>
+          </dd>
+      </dl>
+      <dl>
+        <dt>Architecture:</dt>
+          <dd><a class="sprite distribution"
+                 href="/ubuntu/xenial/amd64">amd64</a>
+          </dd>
+      </dl>
+      <dl>
+        <dt>Pocket:</dt>
+          <dd>Release</dd>
+      </dl>
+      <dl>
+        <dt>Component:</dt>
+          <dd>main</dd>
+      </dl>
+    </div>
+  
+          </div>
+        </div>
+
+      </div> <!-- yui-g  -->
+
+      
+
+        <div id="binaries" class="portlet">
+          
+    
+    <h2>Binary packages</h2>
+
+    
+      <p>Binary packages produced by this build:</p>
+    
+    
+
+    <ul>
+      <li>
+        <span class="sprite package-binary">emerald-0.9.5-a~trusty~NoobsLab.com</span>
+      </li>
+      <li>
+        <span class="sprite package-binary">libemeraldengine-dev-0.9.5-a~trusty~NoobsLab.com</span>
+      </li>
+      <li>
+        <span class="sprite package-binary">libemeraldengine0-0.9.5-a~trusty~NoobsLab.com</span>
+      </li>
+    </ul>
+  
+        </div>
+
+        <div id="files" class="portlet">
+          
+    
+    <h2>Built files</h2>
+    <p>Files resulting from this build:</p>
+    <ul>
+      <li>
+        <a class="sprite download"
+           href="https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+files/emerald_0.9.5-a~trusty~NoobsLab.com_amd64.deb">emerald_0.9.5-a~trusty~NoobsLab.com_amd64.deb</a>
+        (202.8 KiB)
+      </li>
+      <li>
+        <a class="sprite download"
+           href="https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+files/libemeraldengine-dev_0.9.5-a~trusty~NoobsLab.com_amd64.deb">libemeraldengine-dev_0.9.5-a~trusty~NoobsLab.com_amd64.deb</a>
+        (62.7 KiB)
+      </li>
+      <li>
+        <a class="sprite download"
+           href="https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+files/libemeraldengine0_0.9.5-a~trusty~NoobsLab.com_amd64.deb">libemeraldengine0_0.9.5-a~trusty~NoobsLab.com_amd64.deb</a>
+        (62.0 KiB)
+      </li>
+    </ul>
+  
+        </div>
+
+      
+
+      
+
+   </div>
+            
+            
+          </div><!-- yui-b -->
+        </div><!-- yui-main -->
+
+        
+          <!-- yui-b side -->
+        
+      <!-- yui-t4 -->
+
+      
+  <div id="footer" class="footer">
+    <div class="lp-arcana">
+        <div class="lp-branding">
+          <a href="https://launchpad.net/"><img src="/@@/launchpad-logo-and-name-hierarchy.png" alt="Launchpad" /></a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://launchpad.net/+tour">Take the tour</a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://help.launchpad.net/">Read the guide</a>
+          &nbsp;
+          <form id="globalsearch" method="get"
+                accept-charset="UTF-8"
+                action="https://launchpad.net/+search">
+            <input type="search" id="search-text" name="field.text" />
+            <input type="image" src="/@@/search" style="vertical-align:5%" alt="Search Launchpad" />
+          </form>
+        </div>
+        
+  
+
+    </div>
+
+    <div class="colophon">
+      &copy; 2004-2016
+      <a href="http://canonical.com/">Canonical&nbsp;Ltd.</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://launchpad.net/legal">Terms of use</a>
+      &nbsp;&bull;&nbsp;
+      <a href="/feedback">Contact Launchpad Support</a>
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://blog.launchpad.net/">Blog</a>
+      
+	&nbsp;&bull;&nbsp;
+	<a href="http://www.canonical.com/about-canonical/careers">Careers</a>
+      
+      &nbsp;&bull;&nbsp;
+      <a href="https://twitter.com/launchpadstatus">System status</a>
+      <span id="lp-version">
+      &nbsp;&bull;&nbsp;
+        r18269
+        
+        
+        (<a href="https://dev.launchpad.net/">Get the code!</a>)
+      </span>
+    </div>
+  </div>
+
+    </div><!-- yui-d0-->
+
+    
+  
+  
+  <script id="json-cache-script">LP.cache = {"related_features": {}, "context": {"external_dependencies": null, "can_be_rescored": false, "builder_link": "https://blueprints.launchpad.net/api/devel/builders/lgw01-18", "datebuilt": "2016-01-17T08:54:52.216205+00:00", "source_package_name": "emerald", "can_be_retried": false, "duration": "0:05:21.155022", "can_be_cancelled": false, "title": "amd64 build of emerald 0.9.5-a~trusty~NoobsLab.com in ubuntu xenial RELEASE", "buildstate": "Successfully built", "http_etag": "\"dfaf8d75442f62620b90dfb2618e9135dfd9ea7a-86a9b6c49a8b65a05e8fc8a205b7720d9a754552\"", "score": null, "self_link": "https://blueprints.launchpad.net/api/devel/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668", "date_started": "2016-01-17T08:49:31.061183+00:00", "resource_type_link": "https://blueprints.launchpad.net/api/devel/#build", "build_log_url": "https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+files/buildlog_ubuntu-xenial-amd64.emerald_0.9.5-a~trusty~NoobsLab.com_BUILDING.txt.gz", "pocket": "Release", "dependencies": null, "date_first_dispatched": "2016-01-17T08:49:31.061183+00:00", "current_source_publication_link": "https://blueprints.launchpad.net/api/devel/~cybersec/+archive/ubuntu/panto-packages-xenial/+sourcepub/5968289", "distribution_link": "https://blueprints.launchpad.net/api/devel/ubuntu", "upload_log_url": null, "web_link": "https://launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668", "datecreated": "2016-01-17T08:49:29.181364+00:00", "archive_link": "https://blueprints.launchpad.net/api/devel/~cybersec/+archive/ubuntu/panto-packages-xenial", "arch_tag": "amd64", "changesfile_url": "https://blueprints.launchpad.net/~cybersec/+archive/ubuntu/panto-packages-xenial/+build/8860668/+files/emerald_0.9.5-a~trusty~NoobsLab.com_amd64.changes"}};</script>
+
+    
+  
+
+    
+  </body>
+
+
+  <!--
+    Facet name: overview
+    Page type: main_only
+    Has global search: True
+    Has application tabs: True
+    Has side portlets: False
+
+    At least 31 queries/external actions issued in 0.85 seconds
+
+    Features: {'app.mainsite_only.canonical_url': None, 'baselayout.careers_link.disabled': None, 'hard_timeout': u'5000', 'profiling.enabled': None, 'js.yui_version': None, 'visible_render_time': None}
+
+    r18269
+
+    -->
+
+</html>
+

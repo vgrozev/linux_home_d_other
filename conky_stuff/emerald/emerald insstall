@@ -1,0 +1,13 @@
+file:///media/vlado/92cab917-69f7-4d59-92d1-efcf3efcbec0/emerald/8860668
+
+...all 3 files from the bottom up. 
+
+in compiz manager, change windows decorator from: /usr/bin/gtk-window-decorator  , to: /usr/bin/emerald
+
+enable "Place Windows" in Category/Windows Management
+
+---------------------------------------------------
+16.04:
+
+sudo add-apt-repository ppa:manatails/emerald
+sudo apt-get update

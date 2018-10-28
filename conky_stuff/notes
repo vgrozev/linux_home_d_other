@@ -1,0 +1,21 @@
+sudo add-apt-repository ppa:atareao/atareao
+sudo apt-get update && sudo apt-get upgrade  
+sudo apt autoremove 
+sudo apt-get install touchpad-indicator
+
+sudo apt-get install conky
+./conky-builder.sh 
+conky 
+killall conky
+
+
+-------------------
+startup applications: 
+
+conky
+sh -c "sleep 10; conky;"
+system monitor
+
+------------------
+http://os-builder.com/Apps/Apps/all/binary-amd64/
+
