@@ -14,7 +14,7 @@ fast_git() {
                 git pull
 
                 if [[ $(basename "$rep") == "$pers_repo1" ]] || [[ $(basename "$rep") == "$pers_repo2" ]] || [[ $(basename "$rep") == "$pers_repo3" ]]; then
-                	echo -e "\n******** Personal ********\n"
+                	echo -e "\n=== Personal ===\n"
                 	git add .
                 	git commit -a -m '...'
                 	git push
