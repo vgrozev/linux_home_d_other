@@ -1,20 +1,29 @@
 #!/bin/bash
 
-
 fast_git() {
-	
-	dir="$HOME/git_repos"
 
-	for rep in "$dir"/*
-       	do
-		[[ -e "$rep" ]] || break
-		cd "$rep" || break
-		git pull
-		git add .
-		git commit -a -m '...'
-		git push
-		echo -e "\nEnd of repo  -----> \"$(basename "$rep")\" \n======\n"
-	done
+        dir="$HOME/git_repos"
+        pers_repo1="linux_home_d"
+        pers_repo2="linux_home_d_other"
+        pers_repo3="local_notes"
+
+        for rep in "$dir"/*
+        do
+                [[ -e "$rep" ]] || break
+                cd "$rep" || break
+                git pull
+
+                if [[ $(basename "$rep") == "$pers_repo1" ]] || [[ $(basename "$rep") == "$pers_repo2" ]] || [[ $(basename "$rep") == "$pers_repo3" ]]; then
+                	echo -e "\n******** Personal ********\n"
+                	git add .
+                	git commit -a -m '...'
+                	git push
+                	cd "$dir" || return
+                fi
+
+                echo -e "\n===================== End of repo  -----> \"$(basename "$rep")\" =====================\n"
+        done
 }
 
 fast_git
+
