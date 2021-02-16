@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+fast_git() {
+	
+	dir="$HOME/git_repos"
+
+	for rep in "$dir"/*
+       	do
+		[[ -e "$rep" ]] || break
+		cd "$rep" || break
+		git pull
+		git add .
+		git commit -a -m '...'
+		git push
+		echo -e "\nEnd of repo  -----> \"$(basename "$rep")\" \n======\n"
+	done
+}
+
+fast_git
